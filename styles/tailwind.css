@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    @apply text-white bg-teal-600 dark:text-gray-800 dark:bg-orange-400;
+  }
+
+  /*
+  The page supports both dark and light color schemes,
+  and the page author prefers dark.
+  */
+  :root {
+    color-scheme: dark light;
+  }
+}
