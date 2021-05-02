@@ -5,8 +5,8 @@
 .vscode/
 /.cache
 /app/styles/**/*.css
+/app/styles/**/*.css
 /build
 /public/build
-/server/build
 node_modules/
 yarn-error.log
