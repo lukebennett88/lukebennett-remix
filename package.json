@@ -4,7 +4,7 @@
   "description": "Website for lukebennett.com.au",
   "license": "",
   "scripts": {
-    "build": "npm run css:build && remix build2",
+    "build": "npm run css:build && remix build",
     "clean": "rimraf ./node_modules/.cache ./build ./public/build \"./app/styles/**/*.css\"",
     "css:watch": "postcss styles/**/*.css --base styles --dir app/styles --w",
     "css:build": "postcss styles/**/*.css --base styles --dir app/styles --env production",
