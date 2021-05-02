@@ -4,9 +4,7 @@
 .vercel
 .vscode/
 /.cache
-/app/styles/**/*.css
-/app/styles/**/*.css
-/build
 /public/build
-node_modules/
+/server/build
+node_modules
 yarn-error.log
