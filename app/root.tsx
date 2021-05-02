@@ -48,25 +48,34 @@ interface ErrorBoundaryProps {
 export function ErrorBoundary({
   error,
 }: ErrorBoundaryProps): React.ReactElement {
+  const { year } = useRouteData();
   return (
     <html lang="en-AU">
       <head>
         <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.svg" />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <title>Oops!</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div>
-          <h1>App Error</h1>
-          <pre>{error.message}</pre>
-          <p>
-            Replace this UI with what you want users to see when your app throws
-            uncaught errors.
-          </p>
+      <body className="bg-teal-600 dark:bg-orange-400">
+        <div className="flex flex-col min-h-screen bg-white border-t-8 border-teal-600 dark:bg-gray-800 dark:border-orange-400">
+          <Nav />
+          <main className="flex-1">
+            <div>
+              <h1>App Error</h1>
+              <pre>{error.message}</pre>
+              <p>
+                Replace this UI with what you want users to see when your app
+                throws uncaught errors.
+              </p>
+            </div>
+          </main>
+          <Footer year={year} />
+          <Scripts />
+          {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
         </div>
-        <Scripts />
       </body>
     </html>
   );
