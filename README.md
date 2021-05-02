@@ -1,4 +1,4 @@
-# Welcome to Remix!
+# Welcome to Remix
 
 - [Remix Docs](https://docs.remix.run)
 - [Customer Dashboard](https://remix.run/dashboard)
@@ -16,7 +16,7 @@ Before you can run the app in development, you need link this project to a new V
 **It is important that you use a new project. If you try to link this project to an existing project (like a Next.js site) you will have problems.**
 
 ```sh
-$ vercel link
+vercel link
 ```
 
 Follow the prompts, and when its done you should be able to get started.
@@ -54,9 +54,9 @@ When you ran `npm init remix`, we probably created an npmrc in your home directo
 If it looks something like that, then you can run these commands to add your npmrc from the command line:
 
 ```bash
-$ vercel env add plain NPM_RC development < ~/.npmrc
-$ vercel env add plain NPM_RC preview < ~/.npmrc
-$ vercel env add plain NPM_RC production < ~/.npmrc
+vercel env add plain NPM_RC development < ~/.npmrc
+vercel env add plain NPM_RC preview < ~/.npmrc
+vercel env add plain NPM_RC production < ~/.npmrc
 ```
 
 You can also add this environment variable in your vercel project dashboard.
