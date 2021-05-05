@@ -1,13 +1,14 @@
 {
+  "name": "remix-app-template",
   "private": true,
-  "name": "lukebennett.com.au",
-  "description": "Website for lukebennett.com.au",
+  "description": "",
   "license": "",
+  "sideEffects": false,
   "scripts": {
     "prebuild": "npm run clean",
     "build": "run-s build:*",
     "build:css": "postcss styles/**/*.css --base styles --dir app/styles --env production",
-    "build:remix": "remix build",
+    "build:remix": "remix build2",
     "clean": "rimraf ./node_modules/.cache ./build ./public/build \"./app/styles/**/*.css\"",
     "dev": "npm run build:css && pm2-dev pm2.config.js",
     "dev:css": "postcss styles/**/*.css --base styles --dir app/styles --w",
@@ -18,29 +19,97 @@
     "format": "prettier . --write --ignore-unknown",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write",
+    "*.--ignore-unknown": "prettier --write"
+  },
+  "prettier": {
+    "endOfLine": "lf",
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "eslintConfig": {
+    "extends": [
+      "auto"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/no-floating-promises": 0,
+      "@typescript-eslint/no-unsafe-assignment": 0,
+      "@typescript-eslint/no-unsafe-call": 0,
+      "@typescript-eslint/no-unsafe-member-access": 0,
+      "@typescript-eslint/no-unused-vars": 1,
+      "@typescript-eslint/no-use-before-define": 0,
+      "arrow-body-style": 0,
+      "eslint-comments/disable-enable-pair": 0,
+      "global-require": 0,
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": false,
+          "optionalDependencies": false,
+          "peerDependencies": false
+        }
+      ],
+      "import/prefer-default-export": 0,
+      "jsx-a11y/no-noninteractive-element-interactions": 0,
+      "jsx-a11y/no-noninteractive-tabindex": 0,
+      "no-underscore-dangle": 0,
+      "no-unused-vars": 1,
+      "no-secrets/no-secrets": 0,
+      "react/jsx-filename-extension": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "react/no-array-index-key": 1,
+      "react/no-danger": 1,
+      "react/no-unescaped-entities": 0,
+      "react/no-unused-prop-types": 1,
+      "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
+      "react/require-default-props": 0,
+      "scanjs-rules/assign_to_src": 0,
+      "scanjs-rules/identifier_localStorage": 0,
+      "scanjs-rules/property_localStorage": 0,
+      "sonarjs/no-duplicate-string": 1,
+      "unicorn/no-array-reduce": 0,
+      "unicorn/no-new-array": 0,
+      "unicorn/no-useless-undefined": 0,
+      "unicorn/prefer-module": 0,
+      "unicorn/prefer-spread": 0
+    },
+    "root": true
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "build",
+    "public/build"
+  ],
   "dependencies": {
     "@headlessui/react": "^1.1.1",
     "@heroicons/react": "^1.0.1",
-    "@remix-run/react": "^0.17.0",
-    "@remix-run/vercel": "^0.17.0",
+    "@remix-run/react": "0.16.5",
+    "@remix-run/vercel": "0.16.5",
     "@vercel/node": "^1.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "react-router-dom": "^6.0.0-beta.0",
-    "remix": "*"
+    "react-router-dom": "^6.0.0-beta.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^0.17.0",
+    "@remix-run/dev": "0.16.5",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/line-clamp": "^0.2.0",
     "@tailwindcss/typography": "^0.4.0",
-    "@types/node": "^15.0.1",
-    "@types/react": "^17.0.4",
+    "@types/node": "^15.0.2",
+    "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
     "autoprefixer": "^10.2.5",
     "eslint": "^7.25.0",
     "eslint-config-adjunct": "^4.11.1",
@@ -51,7 +120,7 @@
     "eslint-plugin-array-func": "^3.1.7",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-html": "^6.1.2",
-    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-json": "^3.0.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-markdown": "^2.1.0",
     "eslint-plugin-no-constructor-bind": "^2.0.4",
@@ -81,68 +150,7 @@
     "typescript": "^4.2.4",
     "vercel": "^22.0.1"
   },
-  "prettier": {
-    "endOfLine": "lf",
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "auto"
-    ],
-    "rules": {
-      "@typescript-eslint/explicit-function-return-type": 0,
-      "@typescript-eslint/no-floating-promises": 0,
-      "@typescript-eslint/no-unsafe-assignment": 0,
-      "@typescript-eslint/no-unsafe-call": 0,
-      "@typescript-eslint/no-unsafe-member-access": 0,
-      "@typescript-eslint/no-unused-vars": 1,
-      "@typescript-eslint/no-use-before-define": 0,
-      "arrow-body-style": 0,
-      "eslint-comments/disable-enable-pair": 0,
-      "global-require": 0,
-      "import/prefer-default-export": 0,
-      "jsx-a11y/no-noninteractive-element-interactions": 0,
-      "jsx-a11y/no-noninteractive-tabindex": 0,
-      "no-secrets/no-secrets": 0,
-      "no-underscore-dangle": 0,
-      "no-unused-vars": 1,
-      "react/jsx-filename-extension": 0,
-      "react/jsx-one-expression-per-line": 0,
-      "react/no-array-index-key": 1,
-      "react/no-danger": 1,
-      "react/no-unescaped-entities": 0,
-      "react/no-unused-prop-types": 1,
-      "react/prop-types": 0,
-      "react/react-in-jsx-scope": 0,
-      "react/require-default-props": 0,
-      "scanjs-rules/assign_to_src": 0,
-      "scanjs-rules/identifier_localStorage": 0,
-      "scanjs-rules/property_localStorage": 0,
-      "sonarjs/no-duplicate-string": 1,
-      "unicorn/no-array-reduce": 0,
-      "unicorn/no-new-array": 0,
-      "unicorn/no-useless-undefined": 0,
-      "unicorn/prefer-module": 0,
-      "unicorn/prefer-spread": 0
-    }
-  },
-  "eslintIgnore": [
-    "node_modules",
-    "build",
-    "public/build"
-  ],
   "engines": {
     "node": "14"
-  },
-  "sideEffects": false,
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
   }
 }
