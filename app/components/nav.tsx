@@ -24,7 +24,7 @@ const navigation: NavItem[] | [] = [
 //   }
 // }
 
-export function Nav(): React.ReactElement {
+export function Nav(): JSX.Element {
   return (
     <Popover>
       {({ open }) => (
@@ -87,7 +87,7 @@ interface MobileMenuProps {
   open: boolean;
 }
 
-function MobileMenu({ open }: MobileMenuProps): React.ReactElement {
+function MobileMenu({ open }: MobileMenuProps): JSX.Element {
   return (
     <Transition
       show={open}

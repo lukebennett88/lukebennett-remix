@@ -1,4 +1,4 @@
-export function Hero(): React.ReactElement {
+export function Hero(): JSX.Element {
   return (
     <div className="relative">
       <div className="max-w-5xl px-4 mx-auto mt-16 sm:mt-24 sm:px-6 lg:mt-32 lg:px-8">
