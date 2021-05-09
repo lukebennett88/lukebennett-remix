@@ -6,11 +6,11 @@
   >
   <style>
     path {
-      fill: #059669;
+      fill: #0d9488;
     }
     @media (prefers-color-scheme: dark) {
       path {
-        fill: #f97316;
+        fill: #fb923c;
       }
     }
   </style>
