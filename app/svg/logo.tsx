@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 function Logo(
   props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
 ): React.ReactElement {
