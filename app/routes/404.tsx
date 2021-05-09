@@ -1,10 +1,10 @@
-import type { MetaFunction } from '@remix-run/react';
+import type { MetaFunction } from 'remix';
 
-export let meta: MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return { title: "Ain't nothing here" };
 };
 
-export default function FourOhFour() {
+export default function NotFoundPage() {
   return (
     <div>
       <h1>404</h1>

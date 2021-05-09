@@ -1,12 +1,6 @@
-import type { LinksFunction, LoaderFunction } from '@remix-run/react';
-import {
-  Links,
-  Meta,
-  Scripts,
-  useLiveReload,
-  useRouteData,
-} from '@remix-run/react';
 import { Outlet } from 'react-router-dom';
+import type { LinksFunction, LoaderFunction } from 'remix';
+import { Links, LiveReload, Meta, Scripts, useRouteData } from 'remix';
 
 import { Footer } from './components/footer';
 import { Nav } from './components/nav';
@@ -22,8 +16,6 @@ export const loader: LoaderFunction = async () => {
 
 export default function App(): JSX.Element {
   const { year } = useRouteData();
-  useLiveReload();
-
   return (
     <html lang="en-AU">
       <head>
@@ -46,6 +38,7 @@ export default function App(): JSX.Element {
           <Footer year={year} />
         </div>
         <Scripts />
+        {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>
   );
