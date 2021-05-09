@@ -7,6 +7,7 @@ export const meta: MetaFunction = () => {
     title: 'Luke Bennett',
     description:
       'I’m a front-end web designer/developer. I specialise in making fast, accessible websites using modern technologies.',
+    image: '/share-image.png',
   };
 };
 
