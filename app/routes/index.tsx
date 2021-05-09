@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
   };
 };
 
-export default function Index(): JSX.Element {
+export default function IndexPage(): JSX.Element {
   return (
     <>
       <Hero />
