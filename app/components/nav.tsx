@@ -85,7 +85,7 @@ function MobileMenu({ open }: MobileMenuProps): JSX.Element {
       <Popover.Panel
         focus
         static
-        className="absolute inset-x-0 top-0 z-10 p-2 transition origin-top-right transform md:hidden"
+        className="absolute inset-x-0 top-0 z-10 p-2 transition origin-top-right transform-gpu md:hidden"
       >
         <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div className="flex items-center justify-between px-5 pt-4">
