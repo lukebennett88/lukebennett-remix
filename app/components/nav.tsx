@@ -11,18 +11,10 @@ interface NavItem {
 }
 
 const navigation: NavItem[] | [] = [
-  // { name: 'About', href: '#' },
+  { name: 'About', href: '/about' },
   // { name: 'Posts', href: '#' },
   // { name: 'Contact', href: '#' },
 ];
-
-// const isBrowser = typeof document !== 'undefined';
-
-// function toggleTheme(): void {
-//   if (isBrowser) {
-//     document.querySelector('html')?.classList.toggle('dark');
-//   }
-// }
 
 export function Nav(): JSX.Element {
   return (
@@ -58,21 +50,12 @@ export function Nav(): JSX.Element {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 dark:text-gray-300"
+                    className="font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 dark:hover:underline"
                   >
                     {item.name}
                   </a>
                 ))}
               </div>
-              {/* <div className="mt-4">
-                <button
-                  type="button"
-                  onClick={toggleTheme}
-                  className="inline-flex items-center px-4 py-2 text-xs font-medium tracking-wider text-white uppercase bg-teal-600 border border-transparent rounded-md shadow-sm dark:bg-orange-400 dark:text-gray-800 hover:bg-teal-700 dark:hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-gray-800 focus:ring-teal-500 dark:focus:ring-orange-300"
-                >
-                  Toggle theme
-                </button>
-              </div> */}
             </div>
           </nav>
 
@@ -130,13 +113,6 @@ function MobileMenu({ open }: MobileMenuProps): JSX.Element {
               </Link>
             ))}
           </div>
-          {/* <button
-            type="button"
-            onClick={toggleTheme}
-            className="block w-full px-5 py-3 font-medium text-center text-teal-600 transition duration-150 ease-in-out dark:text-orange-400 dark:bg-gray-700 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-orange-300"
-          >
-            Toggle theme
-          </button> */}
         </div>
       </Popover.Panel>
     </Transition>
