@@ -6,5 +6,6 @@
 /.cache
 /public/build
 /server/build
+app/styles
 node_modules
 yarn-error.log
