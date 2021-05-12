@@ -1,3 +1,5 @@
+import { Me } from '../svg/me';
+
 export function Hero(): JSX.Element {
   return (
     <div className="relative">
@@ -20,13 +22,7 @@ export function Hero(): JSX.Element {
           <div className="relative mt-12 sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
             <div className="relative w-full mx-auto lg:max-w-md">
               <span className="sr-only">Watch our video to learn more</span>
-              <img
-                className="w-full"
-                src="/me.svg"
-                alt=""
-                width={448}
-                height={306}
-              />
+              <Me />
             </div>
           </div>
         </div>
