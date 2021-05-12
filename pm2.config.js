@@ -3,6 +3,7 @@ module.exports = {
     {
       name: 'Vercel',
       script: 'npm run dev:vercel',
+      node_args: '-r dotenv/config',
       ignore_watch: ['.'],
       env: {
         NODE_ENV: 'development',
