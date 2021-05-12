@@ -12,7 +12,7 @@ interface NavItem {
 
 const navigation: NavItem[] | [] = [
   { name: 'About', href: '/about' },
-  // { name: 'Posts', href: '#' },
+  { name: 'Posts', href: '/posts' },
   // { name: 'Contact', href: '#' },
 ];
 
