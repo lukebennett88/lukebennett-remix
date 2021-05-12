@@ -6,6 +6,7 @@ export interface SanityPost {
   _updatedAt: Date;
   // eslint-disable-next-line @typescript-eslint/ban-types
   body: [object];
+  description: string;
   slug: {
     _type: string;
     current: string;

@@ -21,6 +21,11 @@ export default {
       },
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
