@@ -29,9 +29,10 @@ module.exports = {
         dark: {
           css: {
             color: theme('colors.gray.300'),
-            'h1, h2, h3, h4, a, strong, blockquote, code, thead, pre code, a code': {
-              color: theme('colors.gray.100'),
-            },
+            'h1, h2, h3, h4, a, strong, blockquote, code, thead, pre code, a code':
+              {
+                color: theme('colors.gray.100'),
+              },
             '[class~="lead"], figure figcaption': {
               color: theme('colors.gray.400'),
             },
