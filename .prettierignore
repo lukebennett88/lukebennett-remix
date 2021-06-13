@@ -1,8 +1,8 @@
-.vscode/
 .DS_Store
-node_modules/
-
+.vscode/
 /.cache
 /build
 /public/build
 /server/build
+/studio/dist
+node_modules/
