@@ -30,18 +30,24 @@ export default function AboutPage(): JSX.Element {
           I am a father to 7 kids (including 4 awesome step-kids.) I’ve always
           had a passion for design and I love technology and the open web.
         </p>
-        <p>This website proudly uses the following stack:</p>
-        <p>
-          <a href="https://tailwindcss.com">Tailwind</a> (a utility first CSS
-          framework) for almost all of my CSS.{' '}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> (a blazing fast
-          React-based static site generator) for the frontend.{' '}
-          <a href="https://www.netlify.com">Netlify</a> (a feature-rich and easy
-          to use hosting platform) for hosting the frontend. Decoupled{' '}
-          <a href="https://wordpress.org">WordPress</a> for the CMS/backend.{' '}
-          <a href="https://www.digitalocean.com">DigitalOcean</a>, (another
-          great hosting platform) for hosting the WordPress install.
-        </p>
+        <p>This website is built with the following stack:</p>
+        <ul>
+          <li>
+            <a href="https://tailwindcss.com">Tailwind</a> <em>the</em> Utility
+            First CSS framework.
+          </li>
+          <li>
+            <a href="https://www.sanity.io">Sanity.io</a> a powerful headless
+            CMS.
+          </li>
+          <li>
+            <a href="https://remix.run">Remix</a> a new React meta framework.
+          </li>
+          <li>
+            <a href="https://vercel.com">Vercel</a> hosting by the same people
+            who make <a href="https://nextjs.org">Next.js</a>.
+          </li>
+        </ul>
       </div>
     </div>
   );
