@@ -50,7 +50,7 @@ function Posts({ posts }: PostsProps): JSX.Element | null {
               to={`/posts/${post.slug.current}/`}
               className="block px-4 py-6 transition duration-300 ease-in-out rounded-lg sm:px-6 lg:px-8 sm:py-8 lg:py-10 dark:hover:bg-gray-700 hover:shadow-lg transform-gpu hover:-translate-y-1 hover:scale-105"
             >
-              <article className="prose prose-dark">
+              <article className="prose dark:prose-dark">
                 <h2 className="!text-4xl !mb-[0.8888889em] leading-[1.1111111em]">
                   {post.title}
                 </h2>
