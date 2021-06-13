@@ -1,7 +1,7 @@
 {
-  "name": "remix-app-template",
+  "name": "lukebennett.com.au",
+  "description": "Luke Bennett’s personal website",
   "private": true,
-  "description": "",
   "license": "",
   "sideEffects": false,
   "scripts": {
