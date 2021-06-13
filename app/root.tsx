@@ -14,8 +14,11 @@ export const loader: LoaderFunction = async () => {
   return { year: new Date().getFullYear() };
 };
 
-export default function App(): JSX.Element {
-  const { year } = useRouteData();
+interface DocumentProps {
+  children: React.ReactNode;
+}
+
+function Document({ children }: DocumentProps): JSX.Element {
   return (
     <html lang="en-AU">
       <head>
@@ -32,10 +35,7 @@ export default function App(): JSX.Element {
       <body className="bg-teal-600 dark:bg-orange-400">
         <div className="flex flex-col min-h-screen bg-white border-t-8 border-teal-600 dark:bg-gray-800 dark:border-orange-400">
           <Nav />
-          <main className="flex-1">
-            <Outlet />
-          </main>
-          <Footer year={year} />
+          {children}
         </div>
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
@@ -44,26 +44,35 @@ export default function App(): JSX.Element {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }): JSX.Element {
+export default function App(): JSX.Element {
+  const { year } = useRouteData();
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <title>Oops!</title>
-      </head>
-      <body>
-        <div>
-          <h1>App Error</h1>
-          <pre>{error.message}</pre>
-          <p>
-            Replace this UI with what you want users to see when your app throws
-            uncaught errors.
-          </p>
-        </div>
+    <Document>
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer year={year} />
+    </Document>
+  );
+}
 
-        <Scripts />
-      </body>
-    </html>
+interface ErrorBoundaryProps {
+  error: Error;
+}
+
+export function ErrorBoundary({ error }: ErrorBoundaryProps): JSX.Element {
+  const { year } = useRouteData();
+  return (
+    <Document>
+      <main className="flex-1">
+        <h1>App Error</h1>
+        <pre>{error.message}</pre>
+        <p>
+          Replace this UI with what you want users to see when your app throws
+          uncaught errors.
+        </p>
+      </main>
+      <Footer year={year} />
+    </Document>
   );
 }
