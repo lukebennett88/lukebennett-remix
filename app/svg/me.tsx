@@ -210,8 +210,8 @@ function Me(
         </linearGradient>
         <linearGradient
           id="paint1_linear"
-          x1={50125.1}
-          x2={50125.1}
+          x1={50_125.1}
+          x2={50_125.1}
           y1={209.825}
           y2={0.004}
           gradientUnits="userSpaceOnUse"
