@@ -1,19 +1,19 @@
-import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const navigation = [
   {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/luke_bennett_',
+    name: "Instagram",
+    href: "https://www.instagram.com/luke_bennett_",
     icon: FaInstagram,
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com/luke_bennett_',
+    name: "Twitter",
+    href: "https://twitter.com/luke_bennett_",
     icon: FaTwitter,
   },
   {
-    name: 'GitHub',
-    href: 'https://github.com/lukebennett88',
+    name: "GitHub",
+    href: "https://github.com/lukebennett88",
     icon: FaGithub,
   },
 ];
@@ -39,9 +39,7 @@ export function Footer({ year }: FooterProps): JSX.Element {
           ))}
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
-          <p className="text-base text-center text-gray-400">
-            &copy; {year} Luke Bennett. All rights reserved.
-          </p>
+          <p className="text-base text-center text-gray-400">&copy; {year} Luke Bennett. All rights reserved.</p>
         </div>
       </div>
     </footer>

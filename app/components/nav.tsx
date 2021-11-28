@@ -1,9 +1,9 @@
-import { Popover, Transition } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Popover, Transition } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import * as React from "react";
+import { Link } from "react-router-dom";
 
-import { Logo } from '../svg/logo';
+import { Logo } from "../svg/logo";
 
 interface NavItem {
   name: string;
@@ -11,8 +11,8 @@ interface NavItem {
 }
 
 const navigation: NavItem[] | [] = [
-  { name: 'About', href: '/about' },
-  { name: 'Posts', href: '/posts' },
+  { name: "About", href: "/about" },
+  { name: "Posts", href: "/posts" },
   // { name: 'Contact', href: '#' },
 ];
 
@@ -29,9 +29,7 @@ export function Nav(): JSX.Element {
               <div className="flex items-center justify-between w-full md:w-auto">
                 <Link to="/" className="inline-flex items-center space-x-4">
                   <Logo className="w-auto h-8 text-teal-600 sm:h-10 dark:text-orange-400" />
-                  <span className="text-lg font-medium text-gray-600 dark:text-gray-300">
-                    Luke Bennett
-                  </span>
+                  <span className="text-lg font-medium text-gray-600 dark:text-gray-300">Luke Bennett</span>
                 </Link>
                 {navigation.length > 0 ? (
                   <div className="flex items-center -mr-2 md:hidden">
@@ -90,10 +88,7 @@ function MobileMenu({ open }: MobileMenuProps): JSX.Element {
         <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div className="flex items-center justify-between px-5 pt-4">
             <div>
-              <Logo
-                aria-hidden
-                className="w-auto h-8 text-teal-600 dark:text-orange-400"
-              />
+              <Logo aria-hidden className="w-auto h-8 text-teal-600 dark:text-orange-400" />
             </div>
             <div className="-mr-2">
               <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out bg-white rounded-md dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:bg-gray-800 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 dark:focus:ring-orange-400">

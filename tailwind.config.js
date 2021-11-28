@@ -1,10 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies, sonarjs/no-duplicate-string */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { teal, orange } = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./app/**/*.{js,jsx,ts,tsx}'],
+  mode: "jit",
+  purge: ["./app/**/*.{js,ts,jsx,tsx}"],
   darkMode: 'media',
   theme: {
     extend: {
@@ -57,13 +57,10 @@ module.exports = {
       }),
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/typography'),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/aspect-ratio"),
   ],
 };

@@ -1,44 +1,28 @@
-import { Link, LoaderFunction, MetaFunction, useRouteData } from 'remix';
+import { json, Link, LoaderFunction, MetaFunction, useLoaderData } from "remix";
 
-import { SanityPost } from '../../../types/sanity';
-import { sanityClient } from '../../utils/sanity-client';
+import { SanityPost } from "~/types/sanity";
+import { sanityClient } from "~/utils/sanity-client";
 
 export const meta: MetaFunction = () => {
   return {
-    title: 'Luke Bennett',
+    title: "Luke Bennett",
     description:
-      'I’m a front-end web designer/developer. I specialise in making fast, accessible websites using modern technologies.',
-    image: '/share-image.png',
+      "I’m a front-end web designer/developer. I specialise in making fast, accessible websites using modern technologies.",
+    image: "/share-image.png",
   };
 };
 
 export const loader: LoaderFunction = async () => {
-  let response: SanityPost[] | undefined;
   try {
-    response = await sanityClient.fetch(`*[_type == "post"]`);
+    const response: SanityPost[] | undefined = await sanityClient.fetch(`*[_type == "post"]`);
+    return json(response);
   } catch (error) {
-    throw new Error(error);
+    return json(error, { status: 404 });
   }
-  return response;
 };
 
 export default function IndexPage(): JSX.Element {
-  const posts = useRouteData<SanityPost[]>();
-  return (
-    <>
-      <Posts posts={posts} />
-    </>
-  );
-}
-
-interface PostsProps {
-  posts: SanityPost[] | undefined;
-}
-
-function Posts({ posts }: PostsProps): JSX.Element | null {
-  if (!posts) {
-    return null;
-  }
+  const posts = useLoaderData<SanityPost[]>();
   return (
     <div className="max-w-5xl mx-auto mt-16 sm:mt-24 lg:mt-32">
       <div className="px-4 prose dark:prose-dark sm:px-6 lg:px-8">

@@ -1,78 +1,76 @@
-import { Outlet } from 'react-router-dom';
-import type { LinksFunction, LoaderFunction } from 'remix';
-import { Links, LiveReload, Meta, Scripts, useRouteData } from 'remix';
+import { json, LinksFunction, LoaderFunction, Outlet, useCatch, useLoaderData } from "remix";
 
-import { Footer } from './components/footer';
-import { Nav } from './components/nav';
-import stylesUrl from './styles/tailwind.css';
+import { Document } from "~/components/document";
+import { Layout } from "~/components/layout";
+import globalStylesUrl from "~/styles/global.css";
 
+// https://remix.run/api/app#links
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: stylesUrl }];
+  return [{ rel: "stylesheet", href: globalStylesUrl }];
 };
 
 export const loader: LoaderFunction = async () => {
-  return { year: new Date().getFullYear() };
+  return json({ year: new Date().getFullYear() });
 };
 
-interface DocumentProps {
-  children: React.ReactNode;
-}
-
-function Document({ children }: DocumentProps): JSX.Element {
-  return (
-    <html lang="en-AU">
-      <head>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <link rel="icon" href="/favicon.svg" type="image/svg" />
-        <Meta />
-        <Links />
-      </head>
-      <body className="bg-teal-600 dark:bg-orange-400">
-        <div className="flex flex-col min-h-screen bg-white border-t-8 border-teal-600 dark:bg-gray-800 dark:border-orange-400">
-          <Nav />
-          {children}
-        </div>
-        <Scripts />
-        {process.env.NODE_ENV === 'development' && <LiveReload />}
-      </body>
-    </html>
-  );
-}
-
-export default function App(): JSX.Element {
-  const { year } = useRouteData();
+// https://remix.run/api/conventions#default-export
+// https://remix.run/api/conventions#route-filenames
+export default function App() {
+  const { year } = useLoaderData();
   return (
     <Document>
-      <main className="flex-1">
+      <Layout year={year}>
         <Outlet />
-      </main>
-      <Footer year={year} />
+      </Layout>
     </Document>
   );
 }
 
-interface ErrorBoundaryProps {
-  error: Error;
+// https://remix.run/docs/en/v1/api/conventions#errorboundary
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error(error);
+  const { year } = useLoaderData();
+  return (
+    <Document title="Error!">
+      <Layout year={year}>
+        <div>
+          <h1>There was an error</h1>
+          <p>{error.message}</p>
+          <hr />
+          <p>Hey, developer, you should replace this with what you want your users to see.</p>
+        </div>
+      </Layout>
+    </Document>
+  );
 }
 
-export function ErrorBoundary({ error }: ErrorBoundaryProps): JSX.Element {
-  const { year } = useRouteData();
+// https://remix.run/docs/en/v1/api/conventions#catchboundary
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  let message;
+  switch (caught.status) {
+    case 401:
+      message = <p>Oops! Looks like you tried to visit a page that you do not have access to.</p>;
+      break;
+    case 404:
+      message = <p>Oops! Looks like you tried to visit a page that does not exist.</p>;
+      break;
+
+    default:
+      throw new Error(caught.data || caught.statusText);
+  }
+
+  const { year } = useLoaderData();
+
   return (
-    <Document>
-      <main className="flex-1">
-        <h1>App Error</h1>
-        <pre>{error.message}</pre>
-        <p>
-          Replace this UI with what you want users to see when your app throws
-          uncaught errors.
-        </p>
-      </main>
-      <Footer year={year} />
+    <Document title={`${caught.status} ${caught.statusText}`}>
+      <Layout year={year}>
+        <h1>
+          {caught.status}: {caught.statusText}
+        </h1>
+        {message}
+      </Layout>
     </Document>
   );
 }
