@@ -18,9 +18,8 @@ export default function AboutPage(): JSX.Element {
         <p>Hi, I’m Luke.</p>
         <p>
           I’m a front-end web designer/developer. I specialise in making blazing fast websites using modern
-          technologies. I’m currently the lead developer at{" "}
-          <a href="https://www.phirannodesigns.com.au">Phiranno Designs</a> — reach out if you’d like me to handle your
-          next project.
+          technologies. I currently work at <a href="https://www.thinkmill.com.au">Thinkmill</a> one of Australia’s
+          leading design &amp; development consultancies.
         </p>
         <p>
           I’m your cliche hipster web-developer — I love coffee and craft beer. I also own a Helvetica poster and have a
@@ -36,7 +35,12 @@ export default function AboutPage(): JSX.Element {
             <a href="https://tailwindcss.com">Tailwind</a> <em>the</em> Utility First CSS framework.
           </li>
           <li>
-            <a href="https://www.sanity.io">Sanity.io</a> a powerful headless CMS.
+            <a href="https://www.sanity.io">Sanity.io</a> a powerful headless CMS (
+            <a href="https://keystonejs.com">Keystone</a> is way better though{" "}
+            <span aria-label="winking face emoji" role="img">
+              😉
+            </span>
+            ).
           </li>
           <li>
             <a href="https://remix.run">Remix</a> a new React meta framework.
