@@ -1,9 +1,10 @@
+import { pageWrapperClasses } from "~/utils/page-wrapper-classes";
 import { Me } from "../svg/me";
 
 export function Hero(): JSX.Element {
   return (
     <div className="relative">
-      <div className="max-w-5xl px-4 mx-auto mt-16 sm:mt-24 sm:px-6 lg:mt-32 lg:px-8">
+      <div className={pageWrapperClasses}>
         <div className="items-center lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
             <h1 className="block mt-1 text-4xl font-semibold tracking-tight sm:text-5xl xl:text-6xl">

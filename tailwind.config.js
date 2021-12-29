@@ -15,40 +15,12 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            'h1, h2, h3, h4': {
-              fontWeight: theme('fontWeight.medium'),
-            },
-            blockquote: {
-              borderColor: theme('colors.teal.600'),
-            },
+            '--tw-prose-bullets': theme('colors.teal[600]'),
           },
         },
         dark: {
           css: {
-            color: theme('colors.gray.300'),
-            'h1, h2, h3, h4, a, strong, blockquote, code, thead, pre code, a code':
-              {
-                color: theme('colors.gray.100'),
-              },
-            '[class~="lead"], figure figcaption': {
-              color: theme('colors.gray.400'),
-            },
-            blockquote: {
-              borderColor: theme('colors.orange.400'),
-            },
-            pre: {
-              backgroundColor: theme('colors.gray.900'),
-            },
-            ol: {
-              'li::before': {
-                color: theme('colors.orange.400'),
-              },
-            },
-            ul: {
-              'li::before': {
-                backgroundColor: theme('colors.orange.400'),
-              },
-            },
+            '--tw-prose-bullets': theme('colors.orange[400]'),
           },
         },
       }),

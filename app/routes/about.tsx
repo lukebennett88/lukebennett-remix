@@ -1,4 +1,6 @@
 import type { MetaFunction } from "remix";
+import { getProseClasses } from "~/utils/get-prose-classes";
+import { pageWrapperClasses } from "~/utils/page-wrapper-classes";
 
 export const meta: MetaFunction = () => {
   return {
@@ -10,8 +12,8 @@ export const meta: MetaFunction = () => {
 
 export default function AboutPage(): JSX.Element {
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto prose dark:prose-dark">
+    <div className={pageWrapperClasses}>
+      <article className={getProseClasses({ isCentered: true })}>
         <h1>About</h1>
         <p>Hi, I’m Luke.</p>
         <p>
@@ -44,7 +46,7 @@ export default function AboutPage(): JSX.Element {
             <a href="https://nextjs.org">Next.js</a>.
           </li>
         </ul>
-      </div>
+      </article>
     </div>
   );
 }

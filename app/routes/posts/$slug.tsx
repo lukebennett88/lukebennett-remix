@@ -1,8 +1,10 @@
 import { useLoaderData } from "@remix-run/react";
 import PortableText from "react-portable-text";
-import type { LoaderFunction } from "remix";
+import { json, LoaderFunction } from "remix";
 
 import { SanityPost } from "~/types/sanity";
+import { getProseClasses } from "~/utils/get-prose-classes";
+import { pageWrapperClasses } from "~/utils/page-wrapper-classes";
 import { sanityClient } from "~/utils/sanity-client";
 
 export const loader: LoaderFunction = async ({ params }) => {
@@ -13,16 +15,18 @@ export const loader: LoaderFunction = async ({ params }) => {
   } catch (error) {
     throw new Error("Error loading post");
   }
-  return response;
+  return json(response);
 };
 
-export default function TeamMember(): JSX.Element | null {
+export default function Post(): JSX.Element | null {
   const post = useLoaderData<SanityPost>();
   if (!post) return null;
   return (
-    <div className="max-w-5xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:py-32 lg:px-8">
-      <h1 className="text-4xl">{post.title}</h1>
-      <PortableText content={post.body} serializers={{}} className="mt-12 prose dark:prose-dark" />
+    <div className={pageWrapperClasses}>
+      <div className={getProseClasses({ isCentered: true })}>
+        <h1 className="text-4xl">{post.title}</h1>
+        <PortableText content={post.body} serializers={{}} className="mt-12" />
+      </div>
     </div>
   );
 }

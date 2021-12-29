@@ -1,6 +1,9 @@
 import { json, Link, LoaderFunction, MetaFunction, useLoaderData } from "remix";
 
 import { SanityPost } from "~/types/sanity";
+import { classNames } from "~/utils/classnames";
+import { getProseClasses } from "~/utils/get-prose-classes";
+import { pageWrapperClasses } from "~/utils/page-wrapper-classes";
 import { sanityClient } from "~/utils/sanity-client";
 
 export const meta: MetaFunction = () => {
@@ -21,30 +24,32 @@ export const loader: LoaderFunction = async () => {
   }
 };
 
-export default function IndexPage(): JSX.Element {
+export default function PostsPage(): JSX.Element {
   const posts = useLoaderData<SanityPost[]>();
   return (
-    <div className="max-w-5xl mx-auto mt-16 sm:mt-24 lg:mt-32">
-      <div className="px-4 prose dark:prose-dark sm:px-6 lg:px-8">
-        <h1>Featured Posts</h1>
+    <div className={pageWrapperClasses}>
+      <div className="w-full mx-auto max-w-prose">
+        <div className={getProseClasses({ isCentered: true })}>
+          <h1>Featured Posts</h1>
+        </div>
+        <article className="mt-12">
+          <ul className="grid gap-8">
+            {posts.map((post) => (
+              <li key={post._id}>
+                <Link
+                  to={`/posts/${post.slug.current}/`}
+                  className="block px-4 py-6 -mx-4 transition duration-300 ease-in-out lg:-mx-8 sm:rounded-lg lg:px-8 sm:py-8 lg:py-10 dark:hover:bg-gray-700 hover:shadow-lg transform-gpu hover:-translate-y-1"
+                >
+                  <article className={getProseClasses({ isCentered: true })}>
+                    <h2>{post.title}</h2>
+                    <p>{post.description}</p>
+                  </article>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </article>
       </div>
-      <article className="mt-12">
-        <ul className="grid gap-8">
-          {posts.map((post) => (
-            <li key={post._id}>
-              <Link
-                to={`/posts/${post.slug.current}/`}
-                className="block px-4 py-6 transition duration-300 ease-in-out border-2 border-teal-600 rounded-lg transform-gpu dark:border dark:border-orange-400 dark:border-opacity-20 dark:hover:border-opacity-100 sm:px-6 lg:px-8 sm:py-8 lg:py-10 dark:hover:bg-gray-700 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
-              >
-                <article className="prose dark:prose-dark">
-                  <h2>{post.title}</h2>
-                  <p>{post.description}</p>
-                </article>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </article>
     </div>
   );
 }
