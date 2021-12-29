@@ -22,8 +22,8 @@ export const loader: LoaderFunction = async () => {
 // https://remix.run/api/conventions#meta
 export const meta: MetaFunction = () => {
   return {
-    title: "Remix Starter",
-    description: "Welcome to remix!",
+    title: "Luke Bennett",
+    description: "Personal website for Luke Bennett",
   };
 };
 
