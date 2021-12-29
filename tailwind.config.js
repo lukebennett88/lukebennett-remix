@@ -1,11 +1,8 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { teal, orange } = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  mode: "jit",
-  purge: ["./app/**/*.{js,ts,jsx,tsx}"],
-  darkMode: 'media',
+  content: ["./app/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
